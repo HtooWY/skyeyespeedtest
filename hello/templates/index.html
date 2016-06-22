@@ -1,58 +1,558 @@
-{% extends "base.html" %}
-{% load staticfiles %}
 
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta name="viewport" content="user-scalable=no, width=device-width, maximum-scale=1.0">
+    <script src="//speedof.me/api/api.js" type="text/javascript"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-<div class="jumbotron text-center">
-  <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="{% static 'lang-logo.png'%}">
-    </a>
-    <h1>Getting Started with Python on Heroku</h1>
-    <p>This is a sample Python application deployed to Heroku. It's a reasonably simple app - but a good foundation for understanding how to get the most out of the Heroku platform.</p>
-    <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-python"><span class="glyphicon glyphicon-flash"></span> Getting Started with Python</a>
-    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/python-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
-  </div>
-</div>
-<div class="container">
-  <div class="alert alert-info text-center" role="alert">
-    To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-python" class="alert-link">Getting Started with Python on Heroku</a> tutorial.
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> How this sample app works</h3>
-      <ul>
-        <li>This app was deployed to Heroku, either using Git or by using <a href="https://github.com/heroku/python-getting-started">Heroku Button</a> on the repository.</li>
+    <title>Capstone SpeedTest for Certis Cisco</title>
 
-        <li>When Heroku received the source code, it fetched all the dependencies in the <a href="https://github.com/heroku/python-getting-started/blob/master/requirements.txt">requirements.txt file</a>, creating a deployable slug.</li>
-        <li>The platform then spins up a dyno, a lightweight container that provides an isolated environment in which the slug can be mounted and executed.</li>
-        <li>You can scale your app, manage it, and deploy over <a href="https://addons.heroku.com/">150 add-on services</a>, from the Dashboard or CLI.</li>
-      </ul>
+    <!-- Bootstrap core CSS -->
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<script src="dist/Chart.bundle.js"></script>
+	
+	<script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <style>
+    canvas{
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+	
+	#myLogo img
+	{
+	  max-width:100%; 
+	  max-height:100%;
+	  margin:auto;
+	  
+	}
+
+    </style>
+	
+	<!-- Highchartjs test-->
+	<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'area'
+        },
+        title: {
+            text: 'US and USSR nuclear stockpiles'
+        },
+        subtitle: {
+            text: 'Source: <a href="http://thebulletin.metapress.com/content/c4120650912x74k7/fulltext.pdf">' +
+                'thebulletin.metapress.com</a>'
+        },
+        xAxis: {
+			title:{
+				text: 'Years'
+			},
+            allowDecimals: false,
+            labels: {
+                formatter: function () {
+                    return this.value; // clean, unformatted number for year
+                }
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Nuclear weapon states'
+            },
+            labels: {
+                formatter: function () {
+                    return this.value / 1000 + 'k';
+                }
+            }
+        },
+        tooltip: {
+            pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+        },
+        plotOptions: {
+            area: {
+                pointStart: 1940,
+                marker: {
+                    enabled: false,
+                    symbol: 'circle',
+                    radius: 2,
+                    states: {
+                        hover: {
+                            enabled: true
+                        }
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'USA',
+            data: [null, null, null, null, null, 6, 11, 32, 110, 235, 369, 640,
+                1005, 1436, 2063, 3057, 4618, 6444, 9822, 15468, 20434, 24126,
+                27387, 29459, 31056, 31982, 32040, 31233, 29224, 27342, 26662,
+                26956, 27912, 28999, 28965, 27826, 25579, 25722, 24826, 24605,
+                24304, 23464, 23708, 24099, 24357, 24237, 24401, 24344, 23586,
+                22380, 21004, 17287, 14747, 13076, 12555, 12144, 11009, 10950,
+                10871, 10824, 10577, 10527, 10475, 10421, 10358, 10295, 10104]
+        }, {
+            name: 'USSR/Russia',
+            data: [null, null, null, null, null, null, null, null, null, null,
+                5, 25, 50, 120, 150, 200, 426, 660, 869, 1060, 1605, 2471, 3322,
+                4238, 5221, 6129, 7089, 8339, 9399, 10538, 11643, 13092, 14478,
+                15915, 17385, 19055, 21205, 23044, 25393, 27935, 30062, 32049,
+                33952, 35804, 37431, 39197, 45000, 43000, 41000, 39000, 37000,
+                35000, 33000, 31000, 29000, 27000, 25000, 24000, 23000, 22000,
+                21000, 20000, 19000, 18000, 18000, 17000, 16000]
+        }]
+    });
+});
+		</script>
+		<!-- ########## -->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+		  <a class="navbar-brand myLogo" id="myLogo" style=" margin-right:10px" href="#">
+			<img src="logo.jpg" >
+		  </a>
+          <a class="navbar-brand" style="margin-right:30px" href="#">Capstone SpeedTest for Certis Cisco</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="../../piecustom.html">About</a></li>
+            <li><a href="../../line.html">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container" style="position:relative">
+
+      <div class="starter-template" style="float:left; margin-top:50px; margin-right:10px">
+        <h3>--------------- Settings ---------------</h3><form>
+            Faster Test<input type="range" id="sustainTime" min="1" max="8" value="4"> More Accurate Test<br /><br />
+            <input type="checkbox" id="testServerEnabled" checked="checked">Find Test Server<br />
+            <input type="checkbox" id="userInfoEnabled" checked="checked">Find User Info<br />
+            <input type="checkbox" id="latencyTestEnabled" checked="checked">Do Latency Test<br />
+            <input type="checkbox" id="uploadTestEnabled" checked="checked">Do Upload Test<br />
+            <input type="checkbox" id="progress.enabled" checked="checked">Show Progress<br />
+            <input type="checkbox" id="progress.verbose" checked="checked">Verbose Progress<br />
+        </form>
     </div>
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-link"></span> Next Steps</h3>
-      <ul>
-        <li>If you are following the <a href="https://devcenter.heroku.com/articles/getting-started-with-python">Getting Started</a> guide, then please head back to the tutorial and follow the next steps!</li>
-        <li>If you deployed this app by deploying the Heroku Button, then in a command line shell, run:</li>
-        <ul>
-          <li><code>git clone https://github.com/heroku/python-getting-started.git</code> - this will create a local copy of the source code for the app</li>
-          <li><code>cd python-getting-started</code> - change directory into the local source code repository</li>
-          <li><code>heroku git:remote -a &lt;your-app-name></code> - associate the Heroku app with the repository</li>
-          <li>You'll now be set up to run the app locally, or <a href="https://devcenter.heroku.com/articles/getting-started-with-python#push-local-changes">deploy changes</a> to Heroku</li>
-        </ul>
-      </ul>
-      <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
-      <ul>
-        <li><a href="https://www.heroku.com/home">Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/">Heroku Dev Center</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/getting-started-with-python">Getting Started with Python on Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/django-app-configuration">Configuring Django Apps for Heroku</a></li>
-      </ul>
+	
+    <div class="starter-template" id="prgs" style="float:left; margin-top:50px; margin-right:10px"></div>
+    <div class="starter-template" id="msg" style="float:left; margin-top:50px; margin-right:10px"></div>
+	
+    <div class="starter-template" style="clear:both;"><br /><button style="width:150px" id="btnStart" type="button" onclick="btnStartClick()">Start Test</button><br /></div>
+
+        
+
+    </div><!-- /.container -->
+	<div class="container" style="margin-top=500; margin-right:30px">
+	
+	<div style="width:50%; margin-right:10px; float:left;">
+        <canvas id="canvas"></canvas>
     </div>
-  </div> <!-- row -->
-   <div class="alert alert-info text-center" role="alert">
-    Please do work through the Getting Started guide, even if you do know how to build such an application.  The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
-  </div>
-</div>
-{% endblock %}
+	
+	<div style="margin-right:10px; float:left;">
+	<div id="piechart">
+        <canvas id="chart-area" style="position:relative; "></canvas>
+	</div>
+		<div class="starter-template" id="text" style="text-align: center; margin-top:50px;"></div>
+		
+    </div>
+	<!--
+	<div id="canvas-holder" style="float:left; width:50% margin-right:30px">
+        <canvas id="chart-area" width="300" height="300" />
+    </div>
+	-->
+	</div>
+	<!-- Highchartjs test-->
+	<!--
+	<div class="container" style="margin-top=1000">
+	<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	-->
+	</div>
+	<!-- ########## -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+	
+	<!-- Highchartjs test-->
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<!-- ########## -->
+	<script>
+        SomApi.account = "SOM576a6666310e4";  // API Key here
+        SomApi.domainName = "skyeyecapstone.herokuapp.com";
+        SomApi.onTestCompleted = onTestCompleted;
+        SomApi.onError = onError;
+        SomApi.onProgress = onProgress;
+	
+		var linechart;
+        var msgDiv = document.getElementById("msg");
+        var prgsDiv = document.getElementById("prgs");
+		var textDiv = document.getElementById("text");
+		var fillcolor='rgba(0, 0, 255, 0.3)'
+		var fillcoloryellow='rgba(255, 255, 0, 0.3)'
+		
+		var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        
+        var randomScalingFactor = function() {
+            return Math.round(Math.random() * 10);
+            //return 0;
+        };
+        var randomColorFactor = function() {
+            return Math.round(Math.random() * 255);
+        };
+        var randomColor = function(opacity) {
+            return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
+        };
+
+        var config = {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: "Download dataset",
+                    data: [],
+                    fill: true,
+					backgroundColor:fillcolor,
+					pointBorderWidth: 1,
+                    
+                },
+				{
+                    label: "Upload dataset",
+                    data: [],
+                    fill: true,
+					backgroundColor:fillcoloryellow,
+					pointBorderWidth: 1,
+                    
+                }]
+            },
+            options: {
+                responsive: true,
+                title:{
+                    display:true,
+                    text:'Download/upload progress'
+                },
+                tooltips: {
+                    mode: 'label',
+                    callbacks: {
+                        // beforeTitle: function() {
+                        //     return '...beforeTitle';
+                        // },
+                        // afterTitle: function() {
+                        //     return '...afterTitle';
+                        // },
+                        // beforeBody: function() {
+                        //     return '...beforeBody';
+                        // },
+                        // afterBody: function() {
+                        //     return '...afterBody';
+                        // },
+                        // beforeFooter: function() {
+                        //     return '...beforeFooter';
+                        // },
+                        // footer: function() {
+                        //     return 'Footer';
+                        // },
+                        // afterFooter: function() {
+                        //     return '...afterFooter';
+                        // },
+                    }
+                },
+                hover: {
+                    mode: 'dataset'
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+							display: true,
+                            show: true,
+                            labelString: 'Timestamp'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {	
+							display: true,
+                            show: true,
+                            labelString: 'Speed (Mpbs)'
+                        },
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 10,
+                        }
+                    }]
+                }
+            }
+        };
+		
+		var configPie = {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [
+						0,
+						100,
+
+					],
+					backgroundColor: [
+						"#F7464A",
+
+					],
+				
+				}],
+				labels: [
+					"Percent done",
+					
+				]
+			},
+			options: {
+				responsive: true,
+			}
+		};
+        
+
+        window.onload = function() {
+            
+			
+			var ctxpie = document.getElementById("chart-area").getContext("2d");
+			window.myPie = new Chart(ctxpie, configPie);
+			var ctx = document.getElementById("canvas").getContext("2d");
+            window.myLine  = new Chart(ctx, config);
+			textDiv.innerHTML = "<center>Pass: 0</center><br/><center>Percent Done: 0%</center>";
+        };
+
+        $('#randomizeData').click(function() {
+            $.each(config.data.datasets, function(i, dataset) {
+                dataset.data = dataset.data.map(function() {
+                    return randomScalingFactor();
+                });
+
+            });
+
+            window.myLine.update();
+        });
+
+        $('#changeDataObject').click(function() {
+            config.data = {
+                labels: ["July", "August", "September", "October", "November", "December"],
+                datasets: [{
+                    label: "My First dataset",
+                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                    fill: false,
+                }, {
+                    label: "My Second dataset",
+                    fill: false,
+                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                }]
+            };
+
+            $.each(config.data.datasets, function(i, dataset) {
+                dataset.borderColor = randomColor(0.4);
+                dataset.backgroundColor = randomColor(0.5);
+                dataset.pointBorderColor = randomColor(0.7);
+                dataset.pointBackgroundColor = randomColor(0.5);
+                dataset.pointBorderWidth = 1;
+            });
+
+            // Update the chart
+            window.myLine.update();
+        });
+
+        $('#addDataset').click(function() {
+            var newDataset = {
+                label: 'Dataset ' + config.data.datasets.length,
+                borderColor: randomColor(0.4),
+                backgroundColor: randomColor(0.5),
+                pointBorderColor: randomColor(0.7),
+                pointBackgroundColor: randomColor(0.5),
+                pointBorderWidth: 1,
+                data: [],
+            };
+
+            for (var index = 0; index < config.data.labels.length; ++index) {
+                newDataset.data.push(randomScalingFactor());
+            }
+
+            config.data.datasets.push(newDataset);
+            window.myLine.update();
+        });
+
+        $('#addData').click(function() {
+            if (config.data.datasets.length > 0) {
+                var month = MONTHS[config.data.labels.length % MONTHS.length];
+                config.data.labels.push(month);
+
+                $.each(config.data.datasets, function(i, dataset) {
+                    dataset.data.push(randomScalingFactor());
+                });
+
+                window.myLine.update();
+            }
+        });
+
+        $('#removeDataset').click(function() {
+            config.data.datasets.splice(0, 1);
+            window.myLine.update();
+        });
+
+        $('#removeData').click(function() {
+            config.data.labels.splice(-1, 1); // remove the label first
+
+            config.data.datasets.forEach(function(dataset, datasetIndex) {
+                dataset.data.pop();
+            });
+
+            window.myLine.update();
+        });
+		
+        function btnStartClick() {
+            //set config values
+			SomApi.config.sustainTime = document.getElementById("sustainTime").value;
+            SomApi.config.testServerEnabled = document.getElementById("testServerEnabled").checked;
+            SomApi.config.userInfoEnabled = document.getElementById("userInfoEnabled").checked;
+            SomApi.config.latencyTestEnabled = document.getElementById("latencyTestEnabled").checked;
+            SomApi.config.uploadTestEnabled = document.getElementById("uploadTestEnabled").checked;
+            SomApi.config.progress.enabled = document.getElementById("progress.enabled").checked;
+            SomApi.config.progress.verbose = document.getElementById("progress.verbose").checked;
+
+            msgDiv.innerHTML = "<h3>--------------- Test Result ---------------</h3><h4>" +
+                "Speed test in progress. Please wait...</h4>";
+            SomApi.startTest();
+			/*
+			linechart.destroy();
+			var ctx = document.getElementById("canvas").getContext("2d");
+            window.myline = new Chart(ctx, config);
+			*/
+			
+        }
+
+        function onTestCompleted(testResult) {
+            msgDiv.innerHTML = "<h3>--------------- Test Result ---------------</h3><h4>" +
+                "Download: " + testResult.download + " Mbps <br/>" +
+                "Upload: " + testResult.upload + " Mbps <br/>" +
+                "Latency: " + testResult.latency + " ms <br/>" +
+                "Jitter: " + testResult.jitter + " ms <br/>" +
+                "Test Server: " + testResult.testServer + "<br/>" +
+                "IP: " + testResult.ip_address + "<br/>" +
+                "Hostname: " + testResult.hostname + "<br/>" +
+            "</h4>";
+        }
+
+        function onError(error) {
+            msgDiv.innerHTML = "Error " + error.code + ": " + error.message;
+        }
+		
+		var pass=0
+		var count=0
+        function onProgress(progress) {
+            prgsDiv.innerHTML =
+            "<h3>--------------- Progress ---------------</h3><h4>" +
+                "Progress Type: " + progress.type + "<br/>" +
+                "Pass: " + progress.pass + "<br/>" +
+                "Percent Done: " + progress.percentDone + "% <br/>" +
+                "Current Speed: " + progress.currentSpeed + " Mbps <br/>" +
+            "</h4>";
+			
+			textDiv.innerHTML = "<center>Pass: "+progress.pass+"</center><br/><center>Percent Done: "+progress.percentDone+"%</center>";
+			<!-- -->
+			/*
+			if (count>5){
+				
+					
+				var d =new Date();
+				var time = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()
+				config.data.labels.push(time);
+				if (progress.type=="download"){
+					config.data.datasets[0].data.push(progress.currentSpeed);
+					config.data.datasets[1].data.push(null);
+				} else {
+					config.data.datasets[1].data.push(progress.currentSpeed);
+				}
+				
+				window.myLine.update();
+				
+				count=0
+			}
+			
+			count+=1
+			*/
+			if (count>10){
+				
+					
+				var d =new Date();
+				var time = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()
+				config.data.labels.push(time);
+				
+				
+				count=0
+			} else{
+				config.data.labels.push('');
+			}
+			
+			if (progress.type=="download"){
+				config.data.datasets[0].data.push(progress.currentSpeed);
+				config.data.datasets[1].data.push(null);
+			} else {
+				config.data.datasets[1].data.push(progress.currentSpeed);
+			}
+			
+			window.myLine.update();
+			count+=1
+			if (pass==progress.pass){
+				configPie.data.datasets[0].data[0]=progress.percentDone
+				configPie.data.datasets[0].data[1]=100-progress.percentDone
+			}else {
+				configPie.data.datasets[0].data[0]=0
+				configPie.data.datasets[0].data[1]=100
+			}
+			
+			pass=progress.pass
+			window.myPie.update();
+			
+        }
+    </script>
+  </body>
+</html>
