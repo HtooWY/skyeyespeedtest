@@ -495,7 +495,7 @@ $(function () {
 			   {
 				alert('Successfully called');
 			   },
-			   error:function(exception){alert('Exeption:'+exception);}
+			  // error:function(exception){alert('Exeption:'+exception);}
 				
 			});
         }
@@ -515,7 +515,7 @@ $(function () {
                 "Current Speed: " + progress.currentSpeed + " Mbps <br/>" +
             "</h4>";
 			
-			textDiv.innerHTML = "<center>Pass: "+progress.pass+"</center><br/><center>Percent Done: "+progress.percentDone+"%</center>";
+			textDiv.innerHTML = "<h4><center>Pass: "+progress.pass+"</center><br/><center>Percent Done: "+progress.percentDone+"%</center></h4>";
 			<!-- -->
 			/*
 			if (count>5){
