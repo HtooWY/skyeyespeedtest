@@ -487,7 +487,9 @@ $(function () {
 				data: {download: JSON.stringify(testResult.download),
 					   upload : JSON.stringify(testResult.upload)},
 					   */
-			    data: "download="+testResult.download+"&upload="+testResult.upload,
+				data: {download: '1',upload:'2'},
+				dataType: 'json',
+			    //data: "download="+testResult.download+"&upload="+testResult.upload,
 				/* dataType:'json', */
 				success:function(result)//we got the response
 			   {
