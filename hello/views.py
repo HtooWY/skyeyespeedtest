@@ -9,6 +9,8 @@ def index(request):
     # return HttpResponse('Hello from Python!')
     return render(request, 'index.html')
 
+def test(request):
+    return HttpResponse("hello world")
 def hello(request):
     
     conn=mdb.connect(host='capstoneskyeye.cfyrhe0diz6p.us-west-2.rds.amazonaws.com',port='3306',user='calvinlee708', passwd='chwb5278',db='capstone')
@@ -26,7 +28,7 @@ def hello(request):
 #     if "submit" in request.GET:
 #         if request.GET["submit"]=="get":
 #             return redirect('/player/%s'%(row[0]))      
-    return HttpResponse(str(l[1]))
+    return HttpResponse("dadaa")
 
 def db(request):
 
