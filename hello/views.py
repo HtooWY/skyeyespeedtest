@@ -16,7 +16,7 @@ def hello(request):
     with conn:
         cursor=conn.cursor()
         cursor.execute("select * from capstonespeedtest;")
-        l=cursor.fetchall()
+        l=cursor.fetchone()
         
 #         if cursor.rowcount==0:
 #             raise Http404("Player not found")
@@ -26,7 +26,7 @@ def hello(request):
 #     if "submit" in request.GET:
 #         if request.GET["submit"]=="get":
 #             return redirect('/player/%s'%(row[0]))      
-    return render_to_response(l)
+    return render_to_response(str(l[1]))
 
 def db(request):
 
