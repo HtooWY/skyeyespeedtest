@@ -481,6 +481,8 @@ $(function () {
                 "IP: " + testResult.ip_address + "<br/>" +
                 "Hostname: " + testResult.hostname + "<br/>" +
             "</h4>";
+			var JSONobject = {"download": testResult.download,"upload": testResult.upload};
+			var jsonData = JSON.stringify( JSONObject );
 			$.ajax({
 				url:'/addresult',
 				type:'POST',
@@ -490,8 +492,12 @@ $(function () {
 					   */
 				//data: '{download: "1",upload:"2"}',
 				//data: {download:1,upload:2},
-				data: jQuery.parseJSON( '{ "download": "1" ,"upload":"2"}' ),
-				//contentType: "application/json",
+				data: jsonData,
+				async: false,
+				
+				//JSON.stringify(data),
+				processData: false,
+				contentType: "application/json; charset=utf-8",
 				//dataType: "json",
 			    //data: "download="+testResult.download+"&upload="+testResult.upload,
 				/* dataType:'json', */
