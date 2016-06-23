@@ -1,15 +1,17 @@
 {
-  "asi"      : true,
-  "browser"  : true,
-  "eqeqeq"   : false,
-  "eqnull"   : true,
-  "es3"      : true,
-  "expr"     : true,
-  "jquery"   : true,
-  "latedef"  : true,
-  "laxbreak" : true,
-  "nonbsp"   : true,
-  "strict"   : true,
-  "undef"    : true,
-  "unused"   : true
+	"boss": true,
+	"browser": true,
+	"curly": true,
+	"eqeqeq": true,
+	"eqnull": true,
+	"expr": true,
+	"evil": true,
+	"newcap": true,
+	"noarg": true,
+	"undef": true,
+	"globals": {
+		"define": true,
+		"jQuery": true,
+		"require": true
+	}
 }
