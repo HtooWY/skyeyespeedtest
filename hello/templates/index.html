@@ -481,13 +481,13 @@ $(function () {
                 "Hostname: " + testResult.hostname + "<br/>" +
             "</h4>";
 			$.ajax({
-				url:'https://skyeyecapstone.herokuapp.com/addresult',
+				url:'skyeyecapstone.herokuapp.com/addresult.php',
 				type:'POST',
 				data: {download: testResult.download,
 					   upload : testResult.upload},
 				dataType:'json',
 				
-			})
+			});
         }
 
         function onError(error) {
