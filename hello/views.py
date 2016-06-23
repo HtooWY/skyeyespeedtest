@@ -14,7 +14,7 @@ def test(request):
 
 def hello(request):
     
-    conn=mdb.connect(host='capstoneskyeye.cfyrhe0diz6p.us-west-2.rds.amazonaws.com',port='3306',user='calvinlee708', passwd='chwb5278',db='capstone')
+    conn=mdb.connect(host='capstoneskyeye.cfyrhe0diz6p.us-west-2.rds.amazonaws.com',user='calvinlee708', passwd='chwb5278',db='capstone')
            
     with conn:
         cursor=conn.cursor()
