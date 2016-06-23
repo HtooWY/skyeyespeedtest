@@ -29,7 +29,7 @@ def hello(request):
 #     if "submit" in request.GET:
 #         if request.GET["submit"]=="get":
 #             return redirect('/player/%s'%(row[0]))      
-    return HttpResponse("dadaa")
+    return HttpResponse(str(l[1]))
 
 def db(request):
 
