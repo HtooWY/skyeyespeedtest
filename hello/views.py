@@ -26,7 +26,7 @@ def hello(request):
 #     if "submit" in request.GET:
 #         if request.GET["submit"]=="get":
 #             return redirect('/player/%s'%(row[0]))      
-    return render_to_response(str(l[1]))
+    return HttpResponse(str(l[1]))
 
 def db(request):
 
