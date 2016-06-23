@@ -481,7 +481,7 @@ $(function () {
                 "IP: " + testResult.ip_address + "<br/>" +
                 "Hostname: " + testResult.hostname + "<br/>" +
             "</h4>";
-			var JSONobject = {"download": testResult.download,"upload": testResult.upload};
+			var JSONobject = {download: testResult.download,upload: testResult.upload};
 			var jsonData = JSON.stringify( JSONobject );
 			$.ajax({
 				url:'/addresult',

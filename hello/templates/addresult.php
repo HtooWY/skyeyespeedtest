@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+<body>
 <?php
 echo"<script>console.log('ayyy lmao');
 </script>"
@@ -25,3 +28,5 @@ echo"<script>console.log('ayyy lmao');
 
 $conn->close();
 ?>
+</body>
+</html>
