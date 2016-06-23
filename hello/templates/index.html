@@ -490,9 +490,9 @@ $(function () {
 					   */
 				//data: '{download: "1",upload:"2"}',
 				//data: {download:1,upload:2},
-				data: JSON.stringify({ download: 1,upload: 2 }),
-				contentType: "application/json",
-				dataType: "json",
+				data: jQuery.parseJSON( '{ "download": "1" ,"upload":"2"}' ),
+				//contentType: "application/json",
+				//dataType: "json",
 			    //data: "download="+testResult.download+"&upload="+testResult.upload,
 				/* dataType:'json', */
 				success:function(result)//we got the response
