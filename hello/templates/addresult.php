@@ -18,6 +18,8 @@ $sql = "INSERT INTO capstone.capstonespeedtest (download, upload, latency,jitter
 VALUES ($download, $upload, 0, test, test, test,null)";
 
 $result = mysql_query($sql);
+echo"<script>console.log('ayyy lmao');
+</script>"
 header('Content-Type: application/json; charset=utf-8');
 $conn->close();
 ?>
