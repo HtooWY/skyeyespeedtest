@@ -483,14 +483,17 @@ $(function () {
 			$.ajax({
 				url:'skyeyecapstone.herokuapp.com/addresult.php',
 				type:'POST',
+				/*
 				data: {download: JSON.stringify(testResult.download),
 					   upload : JSON.stringify(testResult.upload)},
-				dataType:'json',
+					   */
+			    data: "download="+testResult.download+"&upload="+testResult.upload,
+				/* dataType:'json', */
 				success:function(result)//we got the response
 			   {
 				alert('Successfully called');
 			   },
-			   error:function(exception){alert('Exeption:'+data);}
+			   error:function(exception){alert('Exeption:'+exception);}
 				
 			});
         }
