@@ -169,7 +169,7 @@ $(function () {
             <input type="checkbox" id="latencyTestEnabled" checked="checked">Do Latency Test<br />
             <input type="checkbox" id="uploadTestEnabled" checked="checked">Do Upload Test<br />
             <input type="checkbox" id="progress.enabled" checked="checked">Show Progress<br />
-            <input type="checkbox" id="progress.verbose" checked="checked">Verbose Progress<br />
+          <!--   <input type="checkbox" id="progress.verbose" checked="checked">Verbose Progress<br />-->
         </form>
     </div>
 	
@@ -457,7 +457,8 @@ $(function () {
             SomApi.config.latencyTestEnabled = document.getElementById("latencyTestEnabled").checked;
             SomApi.config.uploadTestEnabled = document.getElementById("uploadTestEnabled").checked;
             SomApi.config.progress.enabled = document.getElementById("progress.enabled").checked;
-            SomApi.config.progress.verbose = document.getElementById("progress.verbose").checked;
+            //SomApi.config.progress.verbose = document.getElementById("progress.verbose").checked;
+			SomApi.config.progress.verbose = true;
 
             msgDiv.innerHTML = "<h3>--------------- Test Result ---------------</h3><h4>" +
                 "Speed test in progress. Please wait...</h4>";
@@ -488,8 +489,10 @@ $(function () {
 					   upload : JSON.stringify(testResult.upload)},
 					   */
 				//data: '{download: "1",upload:"2"}',
-				data: {download:1,upload:2},
-				
+				//data: {download:1,upload:2},
+				data: JSON.stringify({ download: 1,upload: 2 })
+				contentType: "application/json",
+				dataType: "json",
 			    //data: "download="+testResult.download+"&upload="+testResult.upload,
 				/* dataType:'json', */
 				success:function(result)//we got the response
