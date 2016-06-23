@@ -2,7 +2,8 @@
 <html>
 <body>
 <?php
-echo"<script>console.log('ayyy lmao');</script>";
+
+echo "<script>console.log('ayyy lmao');</script>";
 $servername = "capstoneskyeye.cfyrhe0diz6p.us-west-2.rds.amazonaws.com";
 $username = "calvinlee708";
 $password = "chwb5278";
@@ -22,7 +23,7 @@ $sql = "INSERT INTO capstone.capstonespeedtest (download, upload, latency,jitter
 VALUES ($download, $upload, 0, test, test, test,null)";
 
 $result = mysql_query($sql);
-echo"<script>console.log('ayyy lmao');</script>";
+echo "<script>console.log('ayyy lmao');</script>";
 
 $conn->close();
 ?>
