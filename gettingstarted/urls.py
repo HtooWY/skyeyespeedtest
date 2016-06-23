@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^hello', hello.views.hello, name="hello"),
     url(r'^test', hello.views.test, name="test"),
+    url(r'^addresult',hello.views.addresult, name="addresult"),
 ]

@@ -31,6 +31,9 @@ def hello(request):
 #             return redirect('/player/%s'%(row[0]))      
     return HttpResponse(str(l[1]))
 
+def addresult(request):
+    return render(request, 'addresult.php')
+
 def db(request):
 
     greeting = Greeting()
