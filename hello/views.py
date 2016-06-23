@@ -18,7 +18,7 @@ def hello(request):
            
     with conn:
         cursor=conn.cursor()
-        cursor.execute("select * from capstonespeedtest;")
+        cursor.execute("select * from capstone.capstonespeedtest;")
         l=cursor.fetchone()
         
 #         if cursor.rowcount==0:
