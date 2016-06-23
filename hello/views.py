@@ -10,7 +10,8 @@ def index(request):
     return render(request, 'index.html')
 
 def test(request):
-    return HttpResponse("hello world")
+    return HttpResponse(1)
+
 def hello(request):
     
     conn=mdb.connect(host='capstoneskyeye.cfyrhe0diz6p.us-west-2.rds.amazonaws.com',port='3306',user='calvinlee708', passwd='chwb5278',db='capstone')
